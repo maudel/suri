@@ -11,6 +11,7 @@ import Login from './src/drawer/login';
 import Profile from './src/drawer/profile';
 import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
+import Camera from './src/drawer/camera';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -60,6 +61,10 @@ const MainRoot = DrawerNavigator(
     Settings: {
       path: '/settings',
       screen: Settings,
+    },
+    Camera: {
+      path: '/camera',
+      screen: Camera,
     },
   },
   {
