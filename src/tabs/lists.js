@@ -19,7 +19,7 @@ const ListsTab = StackNavigator({
     screen: ListsTabView,
     path: '/',
     navigationOptions: ({ navigation }) => ({
-      title: 'Lists',
+      title: 'Desaparecidos',
       headerLeft: (
         <Icon
           name="menu"

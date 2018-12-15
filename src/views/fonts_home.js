@@ -1,328 +1,127 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Platform } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { Constants, MapView, Location, Permissions } from 'expo';
+import { Button } from 'react-native-elements';
 
-import { Text } from 'react-native-elements';
+export default class Fonts extends Component {
+  state = {
+    mapRegion: null,
+    hasLocationPermissions: false,
+    locationResult: null,
+    denuncias: [{
+      latitude: -16.503908699999997,
+      longitude: -68.1334116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1234116
+    },{
+      latitude: -16.504908699999997,
+      longitude: -68.1134116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1434116
+    },{
+      latitude: -16.507908699999997,
+      longitude: -68.1434116
+    },{
+      latitude: -16.508908699999997,
+      longitude: -68.1734116
+    },{
+      latitude: -16.500908699999997,
+      longitude: -68.1934116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1434116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1434116
+    },{
+      latitude: -16.501108699999997,
+      longitude: -68.1134116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1434116
+    },{
+      latitude: -16.502908699999997,
+      longitude: -68.1434116
+    }]
+  };
 
-const iOS_fonts = [
-  'Academy Engraved LET',
-  'AcademyEngravedLetPlain',
-  'Al Nile',
-  'AlNile-Bold',
-  'American Typewriter',
-  'AmericanTypewriter-Bold',
-  'AmericanTypewriter-Condensed',
-  'AmericanTypewriter-CondensedBold',
-  'AmericanTypewriter-CondensedLight',
-  'AmericanTypewriter-Light',
-  'Apple Color Emoji',
-  'AppleColorEmoji',
-  'Apple SD Gothic Neo',
-  'AppleSDGothicNeo-Bold',
-  'AppleSDGothicNeo-Light',
-  'AppleSDGothicNeo-Medium',
-  'AppleSDGothicNeo-Regular',
-  'AppleSDGothicNeo-SemiBold',
-  'AppleSDGothicNeo-Thin',
-  'AppleSDGothicNeo-UltraLight',
-  'Arial',
-  'Arial Hebrew',
-  'Arial Rounded MT Bold',
-  'Arial-BoldItalicMT',
-  'Arial-BoldMT',
-  'Arial-ItalicMT',
-  'ArialHebrew',
-  'ArialHebrew-Bold',
-  'ArialHebrew-Light',
-  'ArialMT',
-  'ArialRoundedMTBold',
-  'Avenir',
-  'Avenir-Black',
-  'Avenir-BlackOblique',
-  'Avenir-Book',
-  'Avenir-BookOblique',
-  'Avenir-Heavy',
-  'Avenir-HeavyOblique',
-  'Avenir-Light',
-  'Avenir-LightOblique',
-  'Avenir-Medium',
-  'Avenir-MediumOblique',
-  'Avenir-Oblique',
-  'Avenir-Roman',
-  'Avenir Next',
-  'Avenir Next Condensed',
-  'AvenirNext-Bold',
-  'AvenirNext-BoldItalic',
-  'AvenirNext-DemiBold',
-  'AvenirNext-DemiBoldItalic',
-  'AvenirNext-Heavy',
-  'AvenirNext-HeavyItalic',
-  'AvenirNext-Italic',
-  'AvenirNext-Medium',
-  'AvenirNext-MediumItalic',
-  'AvenirNext-Regular',
-  'AvenirNext-UltraLight',
-  'AvenirNext-UltraLightItalic',
-  'AvenirNextCondensed-Bold',
-  'AvenirNextCondensed-BoldItalic',
-  'AvenirNextCondensed-DemiBold',
-  'AvenirNextCondensed-DemiBoldItalic',
-  'AvenirNextCondensed-Heavy',
-  'AvenirNextCondensed-HeavyItalic',
-  'AvenirNextCondensed-Italic',
-  'AvenirNextCondensed-Medium',
-  'AvenirNextCondensed-MediumItalic',
-  'AvenirNextCondensed-Regular',
-  'AvenirNextCondensed-UltraLight',
-  'AvenirNextCondensed-UltraLightItalic',
-  'Bangla Sangam MN',
-  'Baskerville',
-  'Baskerville-Bold',
-  'Baskerville-BoldItalic',
-  'Baskerville-Italic',
-  'Baskerville-SemiBold',
-  'Baskerville-SemiBoldItalic',
-  'Bodoni 72',
-  'Bodoni 72 Oldstyle',
-  'Bodoni 72 Smallcaps',
-  'Bodoni Ornaments',
-  'BodoniOrnamentsITCTT',
-  'BodoniSvtyTwoITCTT-Bold',
-  'BodoniSvtyTwoITCTT-Book',
-  'BodoniSvtyTwoITCTT-BookIta',
-  'BodoniSvtyTwoOSITCTT-Bold',
-  'BodoniSvtyTwoOSITCTT-Book',
-  'BodoniSvtyTwoSCITCTT-Book',
-  'Bradley Hand',
-  'BradleyHandITCTT-Bold',
-  'Chalkboard SE',
-  'ChalkboardSE-Bold',
-  'ChalkboardSE-Light',
-  'ChalkboardSE-Regular',
-  'Chalkduster',
-  'Cochin',
-  'Cochin-Bold',
-  'Cochin-BoldItalic',
-  'Cochin-Italic',
-  'Copperplate',
-  'Copperplate-Bold',
-  'Copperplate-Light',
-  'Courier',
-  'Courier New',
-  'Courier-Bold',
-  'Courier-BoldOblique',
-  'Courier-Oblique',
-  'CourierNewPS-BoldItalicMT',
-  'CourierNewPS-BoldMT',
-  'CourierNewPS-ItalicMT',
-  'CourierNewPSMT',
-  'Damascus',
-  'DamascusBold',
-  'DamascusLight',
-  'DamascusMedium',
-  'DamascusSemiBold',
-  'Devanagari Sangam MN',
-  'DevanagariSangamMN',
-  'DevanagariSangamMN-Bold',
-  'Didot',
-  'Didot-Bold',
-  'Didot-Italic',
-  'DiwanMishafi',
-  'Euphemia UCAS',
-  'EuphemiaUCAS-Bold',
-  'EuphemiaUCAS-Italic',
-  'Farah',
-  'Futura',
-  'Futura-CondensedExtraBold',
-  'Futura-CondensedMedium',
-  'Futura-Medium',
-  'Futura-MediumItalic',
-  'Geeza Pro',
-  'GeezaPro-Bold',
-  'Georgia',
-  'Georgia-Bold',
-  'Georgia-BoldItalic',
-  'Georgia-Italic',
-  'Gill Sans',
-  'GillSans-Bold',
-  'GillSans-BoldItalic',
-  'GillSans-Italic',
-  'GillSans-Light',
-  'GillSans-LightItalic',
-  'GillSans-SemiBold',
-  'GillSans-SemiBoldItalic',
-  'GillSans-UltraBold',
-  'Gujarati Sangam MN',
-  'GujaratiSangamMN',
-  'GujaratiSangamMN-Bold',
-  'Gurmukhi MN',
-  'GurmukhiMN-Bold',
-  'Heiti SC',
-  'Heiti TC',
-  'Helvetica',
-  'Helvetica Neue',
-  'Helvetica-Bold',
-  'Helvetica-BoldOblique',
-  'Helvetica-Light',
-  'Helvetica-LightOblique',
-  'Helvetica-Oblique',
-  'HelveticaNeue-Bold',
-  'HelveticaNeue-BoldItalic',
-  'HelveticaNeue-CondensedBlack',
-  'HelveticaNeue-CondensedBold',
-  'HelveticaNeue-Italic',
-  'HelveticaNeue-Light',
-  'HelveticaNeue-LightItalic',
-  'HelveticaNeue-Medium',
-  'HelveticaNeue-MediumItalic',
-  'HelveticaNeue-Thin',
-  'HelveticaNeue-ThinItalic',
-  'HelveticaNeue-UltraLight',
-  'HelveticaNeue-UltraLightItalic',
-  'Hiragino Mincho ProN',
-  'Hiragino Sans',
-  'HiraginoSans-W3',
-  'HiraginoSans-W6',
-  'HiraMinProN-W3',
-  'HiraMinProN-W6',
-  'Hoefler Text',
-  'HoeflerText-Black',
-  'HoeflerText-BlackItalic',
-  'HoeflerText-Italic',
-  'HoeflerText-Regular',
-  'Kailasa',
-  'Kailasa-Bold',
-  'Kannada Sangam MN',
-  'KannadaSangamMN',
-  'KannadaSangamMN-Bold',
-  'Khmer Sangam MN',
-  'Kohinoor Bangla',
-  'Kohinoor Devanagari',
-  'Kohinoor Telugu',
-  'KohinoorBangla-Light',
-  'KohinoorBangla-Regular',
-  'KohinoorBangla-Semibold',
-  'KohinoorDevanagari-Light',
-  'KohinoorDevanagari-Regular',
-  'KohinoorDevanagari-Semibold',
-  'KohinoorTelugu-Light',
-  'KohinoorTelugu-Medium',
-  'KohinoorTelugu-Regular',
-  'Lao Sangam MN',
-  'Malayalam Sangam MN',
-  'MalayalamSangamMN',
-  'MalayalamSangamMN-Bold',
-  'Marker Felt',
-  'MarkerFelt-Thin',
-  'MarkerFelt-Wide',
-  'Menlo',
-  'Menlo-Bold',
-  'Menlo-BoldItalic',
-  'Menlo-Italic',
-  'Menlo-Regular',
-  'Mishafi',
-  'Noteworthy',
-  'Noteworthy-Bold',
-  'Noteworthy-Light',
-  'Optima',
-  'Optima-Bold',
-  'Optima-BoldItalic',
-  'Optima-ExtraBlack',
-  'Optima-Italic',
-  'Optima-Regular',
-  'Oriya Sangam MN',
-  'OriyaSangamMN',
-  'OriyaSangamMN-Bold',
-  'Palatino',
-  'Palatino-Bold',
-  'Palatino-BoldItalic',
-  'Palatino-Italic',
-  'Palatino-Roman',
-  'Papyrus',
-  'Papyrus-Condensed',
-  'Party LET',
-  'PartyLetPlain',
-  'PingFang HK',
-  'PingFang SC',
-  'PingFang TC',
-  'PingFangHK-Light',
-  'PingFangHK-Medium',
-  'PingFangHK-Regular',
-  'PingFangHK-Semibold',
-  'PingFangHK-Thin',
-  'PingFangHK-Ultralight',
-  'PingFangSC-Light',
-  'PingFangSC-Medium',
-  'PingFangSC-Regular',
-  'PingFangSC-Semibold',
-  'PingFangSC-Thin',
-  'PingFangSC-Ultralight',
-  'PingFangTC-Light',
-  'PingFangTC-Medium',
-  'PingFangTC-Regular',
-  'PingFangTC-Semibold',
-  'PingFangTC-Thin',
-  'PingFangTC-Ultralight',
-  'Savoye LET',
-  'SavoyeLetPlain',
-  'Sinhala Sangam MN',
-  'SinhalaSangamMN',
-  'SinhalaSangamMN-Bold',
-  'Snell Roundhand',
-  'SnellRoundhand-Black',
-  'SnellRoundhand-Bold',
-  'Symbol',
-  'Tamil Sangam MN',
-  'TamilSangamMN-Bold',
-  'Telugu Sangam MN',
-  'Thonburi',
-  'Thonburi-Bold',
-  'Thonburi-Light',
-  'Times New Roman',
-  'TimesNewRomanPS-BoldItalicMT',
-  'TimesNewRomanPS-BoldMT',
-  'TimesNewRomanPS-ItalicMT',
-  'TimesNewRomanPSMT',
-  'Trebuchet MS',
-  'Trebuchet-BoldItalic',
-  'TrebuchetMS-Bold',
-  'TrebuchetMS-Italic',
-  'Verdana',
-  'Verdana-Bold',
-  'Verdana-BoldItalic',
-  'Verdana-Italic',
-  'Zapf Dingbats',
-  'ZapfDingbatsITC',
-  'Zapfino',
-];
 
-const android_fonts = [
-  'normal',
-  'notoserif',
-  'sans-serif',
-  'sans-serif-light',
-  'sans-serif-thin',
-  'sans-serif-condensed',
-  'sans-serif-medium',
-  'serif',
-  'Roboto',
-  'monospace',
-];
+  componentDidMount() {
+    this._getLocationAsync();
+  }
 
-class Fonts extends Component {
+  _handleMapRegionChange = mapRegion => {
+    console.log(mapRegion);
+    this.setState({ mapRegion });
+  };
+
+  _getLocationAsync = async () => {
+   let { status } = await Permissions.askAsync(Permissions.LOCATION);
+   if (status !== 'granted') {
+     this.setState({
+       locationResult: 'los permisos han sido denegados',
+     });
+   } else {
+     this.setState({ hasLocationPermissions: true });
+   }
+
+   let location = await Location.getCurrentPositionAsync({});
+   this.setState({ locationResult: JSON.stringify(location) });
+   
+   // Center the map on the location we just fetched.
+    this.setState({mapRegion: { latitude: location.coords.latitude, longitude: location.coords.longitude, latitudeDelta: 0.0922, longitudeDelta: 0.0421 }});
+  };
+
   render() {
-    const fonts = Platform.OS === 'ios' ? iOS_fonts : android_fonts;
-
     return (
-      <ScrollView style={styles.container}>
-        {fonts.map((font, index) => (
-          <Text
-            key={index}
-            style={[styles.textStyle, { fontFamily: `${font}` }]}
-          >
-            {font}
-          </Text>
-        ))}
-      </ScrollView>
+      <View style={styles.container}>
+        
+        
+        {
+          this.state.locationResult === null ?
+          <Text>Encontrando tu localizacion actual...</Text> :
+          this.state.hasLocationPermissions === false ?
+            <Text>los permisos de localizacion no fueron dados.</Text> :
+            this.state.mapRegion === null ?
+            <Text>el mapa de la region no existe.</Text> :
+            <MapView
+              style={styles.map}
+              region={this.state.mapRegion}
+              onRegionChange={this._handleMapRegionChange}>
+              
+              {this.state.denuncias.map(marker => (
+      <MapView.Marker
+      coordinate={{
+          latitude: marker.latitude,
+          longitude: marker.longitude
+      }}
+      title={ 'myTitle' }
+      description={ 'myDescription' }
+      pinColor={ 'blue' }
+      onCalloutPress={() => alert('Clicked')}
+  >
+      <MapView.Callout>
+          <View>
+              <Text>Mas Informacion!</Text>
+              <Button></Button>
+          </View>
+      </MapView.Callout>
+  </MapView.Marker>
+  ))}
+            
+              
+
+
+            </MapView>
+        }
+        
+        <Text>
+          Location: {this.state.locationResult}
+        </Text>
+      </View>
+        
     );
   }
 }
@@ -330,12 +129,19 @@ class Fonts extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
   },
-  textStyle: {
+  paragraph: {
+    margin: 24,
     fontSize: 18,
+    fontWeight: 'bold',
     textAlign: 'center',
-    padding: 10,
+    color: '#34495e',
   },
+  map: {
+    width: '100%',
+    height: '100%',
+  }
 });
-
-export default Fonts;
