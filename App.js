@@ -20,7 +20,7 @@ const CustomDrawerContentComponent = props => (
       style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }}
     >
       <Image
-        source={require('./src/images/logo.png')}
+        source={require('./src/images/meerkat.png')}
         style={{ width: SCREEN_WIDTH * 0.57 }}
         resizeMode="contain"
       />
@@ -63,7 +63,7 @@ const MainRoot = DrawerNavigator(
     },
   },
   {
-    initialRouteName: 'Components',
+    initialRouteName: 'Login',
     contentOptions: {
       activeTintColor: '#548ff7',
       activeBackgroundColor: 'transparent',

@@ -154,29 +154,22 @@ export default class LoginScreen3 extends Component {
           behavior="position"
           contentContainerStyle={styles.formContainer}
         >
-          <Text style={styles.signUpText}>Sign up</Text>
-          <Text style={styles.whoAreYouText}>WHO YOU ARE ?</Text>
+          <Text style={styles.signUpText}>Registro</Text>
+          <Text style={styles.whoAreYouText}>¿ Quien eres ?</Text>
           <View style={styles.userTypesContainer}>
             <UserTypeItem
-              label="COOL"
+              label="CIUDADANO"
               labelColor="#ECC841"
               image={USER_COOL}
               onPress={() => this.setSelectedType('parent')}
               selected={selectedType === 'parent'}
             />
             <UserTypeItem
-              label="STUDENT"
+              label="OFICIAL DE POLICIA"
               labelColor="#2CA75E"
               image={USER_STUDENT}
               onPress={() => this.setSelectedType('child')}
               selected={selectedType === 'child'}
-            />
-            <UserTypeItem
-              label="HARRY POTTER"
-              labelColor="#36717F"
-              image={USER_HP}
-              onPress={() => this.setSelectedType('teacher')}
-              selected={selectedType === 'teacher'}
             />
           </View>
           <View style={{ width: '80%', alignItems: 'center' }}>
@@ -185,10 +178,10 @@ export default class LoginScreen3 extends Component {
               icon="user"
               value={username}
               onChangeText={username => this.setState({ username })}
-              placeholder="Username"
+              placeholder="Usuario"
               returnKeyType="next"
               errorMessage={
-                usernameValid ? null : "Your username can't be blank"
+                usernameValid ? null : 'Usuario no puede estar vacio.'
               }
               onSubmitEditing={() => {
                 this.validateUsername();
@@ -200,11 +193,11 @@ export default class LoginScreen3 extends Component {
               icon="envelope"
               value={email}
               onChangeText={email => this.setState({ email })}
-              placeholder="Email"
+              placeholder="Correo electronico"
               keyboardType="email-address"
               returnKeyType="next"
               errorMessage={
-                emailValid ? null : 'Please enter a valid email address'
+                emailValid ? null : 'Correo electronico tiene que ser valido.'
               }
               onSubmitEditing={() => {
                 this.validateEmail();
@@ -220,7 +213,9 @@ export default class LoginScreen3 extends Component {
               secureTextEntry
               returnKeyType="next"
               errorMessage={
-                passwordValid ? null : 'Please enter at least 8 characters'
+                passwordValid
+                  ? null
+                  : 'Introduzca una cadena con 8 caracteres minimo'
               }
               onSubmitEditing={() => {
                 this.validatePassword();
@@ -234,12 +229,10 @@ export default class LoginScreen3 extends Component {
               onChangeText={confirmationPassword =>
                 this.setState({ confirmationPassword })
               }
-              placeholder="Confirm Password"
+              placeholder="Confirmando Password"
               secureTextEntry
               errorMessage={
-                confirmationPasswordValid
-                  ? null
-                  : 'The password fields are not identics'
+                confirmationPasswordValid ? null : 'No son iguales, verifique'
               }
               returnKeyType="go"
               onSubmitEditing={() => {
@@ -250,7 +243,7 @@ export default class LoginScreen3 extends Component {
           </View>
           <Button
             loading={isLoading}
-            title="SIGNUP"
+            title="Registrar"
             containerStyle={{ flex: -1 }}
             buttonStyle={styles.signUpButton}
             linearGradientProps={{
@@ -264,11 +257,9 @@ export default class LoginScreen3 extends Component {
           />
         </KeyboardAvoidingView>
         <View style={styles.loginHereContainer}>
-          <Text style={styles.alreadyAccountText}>
-            Already have an account.
-          </Text>
+          <Text style={styles.alreadyAccountText}>Ya tiene una cuenta.</Text>
           <Button
-            title="Login here"
+            title="Inicie sesion aqui"
             titleStyle={styles.loginHereText}
             containerStyle={{ flex: -1 }}
             buttonStyle={{ backgroundColor: 'transparent' }}

@@ -48,16 +48,17 @@ export default class LoginScreen1 extends Component {
     return re.test(email);
   }
 
-  submitLoginCredentials() {
-    const { showLoading } = this.state;
-
+  submitLoginCredentials = () => {
+    // const { showLoading } = this.state;
     // this.setState({
     //   showLoading: !showLoading,
     // });
-  }
+    console.log('submitLoginCredentials', this.props);
+    this.props.navigate('Components');
+  };
 
   render() {
-       const { email, password, email_valid, showLoading } = this.state;
+    const { email, password, email_valid, showLoading } = this.state;
 
     return (
       <View style={styles.container}>
@@ -66,11 +67,11 @@ export default class LoginScreen1 extends Component {
             <View style={styles.loginView}>
               <View style={styles.loginTitle}>
                 <View style={{ flexDirection: 'row' }}>
-                  <Text style={styles.travelText}>TRAVEL</Text>
+                  <Text style={styles.travelText}>SURI</Text>
                   <Text style={styles.plusText}>+</Text>
                 </View>
                 <View style={{ marginTop: -10 }}>
-                  <Text style={styles.travelText}>LEISURE</Text>
+                  <Text style={styles.travelText}>HELP ME</Text>
                 </View>
               </View>
               <View style={styles.loginInput}>
@@ -87,7 +88,7 @@ export default class LoginScreen1 extends Component {
                   value={email}
                   inputStyle={{ marginLeft: 10, color: 'white' }}
                   keyboardAppearance="light"
-                  placeholder="Email"
+                  placeholder="Correo Electronico"
                   autoFocus={false}
                   autoCapitalize="none"
                   autoCorrect={false}
@@ -102,7 +103,9 @@ export default class LoginScreen1 extends Component {
                   placeholderTextColor="white"
                   errorStyle={{ textAlign: 'center', fontSize: 12 }}
                   errorMessage={
-                    email_valid ? null : 'Please enter a valid email address'
+                    email_valid
+                      ? null
+                      : 'Por favor introduzca un correo, valido.'
                   }
                 />
                 <Input
@@ -119,7 +122,7 @@ export default class LoginScreen1 extends Component {
                   inputStyle={{ marginLeft: 10, color: 'white' }}
                   secureTextEntry={true}
                   keyboardAppearance="light"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                   autoCapitalize="none"
                   autoCorrect={false}
                   keyboardType="default"
@@ -130,10 +133,10 @@ export default class LoginScreen1 extends Component {
                 />
               </View>
               <Button
-                title="LOG IN"
+                title="INICIAR SESION"
                 activeOpacity={1}
                 underlayColor="transparent"
-                onPress={() => this.props.navigation.navigate('Components')}
+                onPress={() => this.submitLoginCredentials()}
                 loading={showLoading}
                 loadingProps={{ size: 'small', color: 'white' }}
                 disabled={!email_valid && password.length < 8}
@@ -149,9 +152,9 @@ export default class LoginScreen1 extends Component {
                 titleStyle={{ fontWeight: 'bold', color: 'white' }}
               />
               <View style={styles.footerView}>
-                <Text style={{ color: 'grey' }}>New here?</Text>
+                <Text style={{ color: 'grey' }}>¿ Nuevo Aqui ?</Text>
                 <Button
-                  title="Create an Account"
+                  title="Crea una cuenta"
                   clear
                   activeOpacity={0.5}
                   titleStyle={{ color: 'white', fontSize: 15 }}

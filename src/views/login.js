@@ -13,11 +13,12 @@ import LoginScreen4 from './login/screen4';
 
 export default class Login extends Component {
   render() {
+    console.log('Login Screen Container', this.props);
     return (
       <View style={styles.container}>
         <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
-          <LoginScreen1 />
-          <LoginScreen2 />
+          <LoginScreen1 {...this.props.navigation} />
+          <LoginScreen2 {...this.props.navigation} />
         </ScrollView>
       </View>
     );

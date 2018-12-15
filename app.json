@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "react-native-elements-app",
+    "name": "Suri to Help",
     "slug": "react-native-elements-app",
-    "description": "A demo app for React Native Elements UI Library",
+    "description": "App for people' security",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
@@ -11,7 +11,7 @@
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/icon.png",
     "splash": {
-      "image": "./assets/icons/loading.png"
+      "image": "./assets/icons/meerkat.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
