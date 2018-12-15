@@ -12,6 +12,7 @@ import Profile from './src/drawer/profile';
 import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
 import Camera from './src/drawer/camera';
+import Loading from './src/views/loading';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -65,6 +66,10 @@ const MainRoot = DrawerNavigator(
     Camera: {
       path: '/camera',
       screen: Camera,
+    },
+    Loading: {
+      path: '/loading',
+      screen: Loading,
     },
   },
   {

@@ -9,6 +9,21 @@ import FontsTab from '../tabs/fonts';
 
 const Components = TabNavigator(
   {
+    UsuariosTab: {
+      screen: ButtonsTab,
+      path: '/buttons',
+      navigationOptions: {
+        tabBarLabel: 'UsuariosTab',
+        tabBarIcon: ({ tintColor, focused }) => (
+          <Icon
+            name={focused ? 'emoticon-cool' : 'emoticon-neutral'}
+            size={30}
+            type="material-community"
+            color={tintColor}
+          />
+        ),
+      },
+    },
     ButtonsTab: {
       screen: ButtonsTab,
       path: '/buttons',

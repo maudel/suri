@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 
 // :fire: this is v good, @xavier-villelegier
-import { default as CameraScreen } from './camera/screen';
+import { default as LoadingScreen } from './loading/screen';
 
-export default class CameraView extends Component {
+export default class LoadingView extends Component {
   render() {
-    console.log('Camera Screen Container', this.props);
     return (
       <View style={styles.container}>
         <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
-          <CameraScreen {...this.props} />
+          <LoadingScreen {...this.props} />
         </ScrollView>
       </View>
     );

@@ -9,12 +9,13 @@ import {
   Dimensions,
   AsyncStorage,
 } from 'react-native';
+import { Button } from 'react-native-elements';
+
 import { Camera, Permissions } from 'expo';
-// import { RNS3 } from 'react-native-aws3';
 
 export default class CameraScreen extends React.Component {
   state = {
-    switchValue: false,
+    switchValue: true,
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
     imageuri: '',
@@ -50,45 +51,21 @@ export default class CameraScreen extends React.Component {
       let username = await AsyncStorage.getItem('username');
       console.log('username', username);
       AsyncStorage.setItem('picture', this.state.picture.base64);
-      this.props.navigate('Login');
+      this.props.navigation.navigate('Loading', {
+        description: 'esto sera una prueba',
+      });
     } catch (error) {
       console.log('esto es un error', error);
     }
-
-    // const file = {
-    //   uri: this.state.imageuri,
-    //   name: `${new Date().getTime()}.jpg`,
-    //   type: 'image/jpeg',
-    // };
-    // const options = {
-    //   keyPrefix: 'ts/',
-    //   bucket: '..name..',
-    //   region: 'eu-west-1',
-    //   accessKey: '..acesskey..',
-    //   secretKey: '..secretkey..',
-    //   successActionStatus: 201,
-    // };
-    // return RNS3.put(file, options)
-    //   .then(response => {
-    //     if (response.status !== 201)
-    //       throw new Error('Failed to upload image to S3');
-    //     else {
-    //       console.log(
-    //         'Successfully uploaded image to s3. s3 bucket url: ',
-    //         response.body.postResponse.location
-    //       );
-    //       this.setState({
-    //         url: response.body.postResponse.location,
-    //         switchValue: false,
-    //       });
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
   };
 
   render() {
+    const { navigation } = this.props;
+    const username = navigation.getParam('username', 'guess');
+    const email = navigation.getParam('email', 'email');
+
+    console.log('Paso 2. Registro de rostro: username', username);
+    console.log('Paso 2. Registro de rostro: email', email);
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
       return <View />;
@@ -144,29 +121,33 @@ export default class CameraScreen extends React.Component {
             <View style={styles.buttonsView}>
               {this.state.imageuri == '' ? (
                 <View style={styles.captureButtonView}>
-                  <TouchableOpacity
-                    style={styles.cameraButtons}
+                  <Button
+                    title="Sacar Foto"
+                    containerStyle={{ flex: -1 }}
+                    buttonStyle={styles.signUpButton}
+                    linearGradientProps={{
+                      colors: ['#FF9800', '#F44336'],
+                      start: [1, 0],
+                      end: [0.2, 0],
+                    }}
+                    titleStyle={styles.signUpButtonText}
                     onPress={this.snap}
-                  >
-                    <Text
-                      style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
-                    >
-                      Sacar Foto
-                    </Text>
-                  </TouchableOpacity>
+                  />
                 </View>
               ) : null}
               <View style={styles.captureButtonView}>
-                <TouchableOpacity
-                  style={styles.cameraButtons}
+                <Button
+                  title="Registrar Foto"
+                  containerStyle={{ flex: -1 }}
+                  buttonStyle={styles.signUpButton}
+                  linearGradientProps={{
+                    colors: ['#FF9800', '#F44336'],
+                    start: [1, 0],
+                    end: [0.2, 0],
+                  }}
+                  titleStyle={styles.signUpButtonText}
                   onPress={this.upload}
-                >
-                  <Text
-                    style={{ fontSize: 18, marginBottom: 10, color: 'white' }}
-                  >
-                    Subir Foto
-                  </Text>
-                </TouchableOpacity>
+                />
               </View>
             </View>
           ) : null}
@@ -235,5 +216,15 @@ const styles = StyleSheet.create({
     height: '90%',
     width: '90%',
     padding: 10,
+  },
+
+  signUpButtonText: {
+    fontFamily: 'bold',
+    fontSize: 13,
+  },
+  signUpButton: {
+    width: 100,
+    borderRadius: 50,
+    height: 45,
   },
 });

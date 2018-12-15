@@ -57,22 +57,6 @@ export default class LoginScreen3 extends Component {
     );
     this.signup = this.signup.bind(this);
   }
-  async componentWillMount() {
-    console.log('Esto es un ComponentWillMount');
-    let picture = await AsyncStorage.getItem('picture');
-    let username = await AsyncStorage.getItem('username');
-    let email = await AsyncStorage.getItem('email');
-    let password = (confirmationPassword = await AsyncStorage.getItem(
-      'password'
-    ));
-    this.setState({
-      picture: 'data:image/jpeg;base64,' + picture,
-      username: username,
-      email: email,
-      password: password,
-      confirmationPassword: confirmationPassword,
-    });
-  }
   async componentDidMount() {
     await Font.loadAsync({
       light: require('../../../assets/fonts/Ubuntu-Light.ttf'),
@@ -85,27 +69,25 @@ export default class LoginScreen3 extends Component {
 
   signup() {
     LayoutAnimation.easeInEaseOut();
-    if (this.state.picture) {
-      const usernameValid = this.validateUsername();
-      const emailValid = this.validateEmail();
-      const passwordValid = this.validatePassword();
-      const confirmationPasswordValid = this.validateConfirmationPassword();
-      if (
-        emailValid &&
-        passwordValid &&
-        confirmationPasswordValid &&
-        usernameValid
-      ) {
-        LayoutAnimation.easeInEaseOut();
-        console.log('Estado=====>', this.state);
-        this.props.navigate('Components');
-        // Alert.alert('REGISTRANDO LOS DATOS');
-      }
+    const usernameValid = this.validateUsername();
+    const emailValid = this.validateEmail();
+    const passwordValid = this.validatePassword();
+    const confirmationPasswordValid = this.validateConfirmationPassword();
+    if (
+      emailValid &&
+      passwordValid &&
+      confirmationPasswordValid &&
+      usernameValid
+    ) {
+      LayoutAnimation.easeInEaseOut();
+      console.log('this.state.username', this.state);
+      this.props.navigate('Camera', {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+      });
     } else {
-      AsyncStorage.setItem('username', this.state.username);
-      AsyncStorage.setItem('email', this.state.email);
-      AsyncStorage.setItem('password', this.state.password);
-      this.props.navigate('Camera');
+      Alert.alert('Obteniendo Foto');
     }
   }
 
