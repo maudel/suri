@@ -11,6 +11,7 @@ import {
   ScrollView,
   Text,
   View,
+  AsyncStorage,
 } from 'react-native';
 import { Font } from 'expo';
 import { Input, Button } from 'react-native-elements';
@@ -45,6 +46,7 @@ export default class LoginScreen3 extends Component {
       passwordValid: true,
       usernameValid: true,
       confirmationPasswordValid: true,
+      picture: '',
     };
 
     this.setSelectedType = this.setSelectedType.bind(this);
@@ -55,7 +57,22 @@ export default class LoginScreen3 extends Component {
     );
     this.signup = this.signup.bind(this);
   }
-
+  async componentWillMount() {
+    console.log('Esto es un ComponentWillMount');
+    let picture = await AsyncStorage.getItem('picture');
+    let username = await AsyncStorage.getItem('username');
+    let email = await AsyncStorage.getItem('email');
+    let password = (confirmationPassword = await AsyncStorage.getItem(
+      'password'
+    ));
+    this.setState({
+      picture: 'data:image/jpeg;base64,' + picture,
+      username: username,
+      email: email,
+      password: password,
+      confirmationPassword: confirmationPassword,
+    });
+  }
   async componentDidMount() {
     await Font.loadAsync({
       light: require('../../../assets/fonts/Ubuntu-Light.ttf'),
@@ -68,22 +85,27 @@ export default class LoginScreen3 extends Component {
 
   signup() {
     LayoutAnimation.easeInEaseOut();
-    const usernameValid = this.validateUsername();
-    const emailValid = this.validateEmail();
-    const passwordValid = this.validatePassword();
-    const confirmationPasswordValid = this.validateConfirmationPassword();
-    if (
-      emailValid &&
-      passwordValid &&
-      confirmationPasswordValid &&
-      usernameValid
-    ) {
-      this.setState({ isLoading: true });
-      setTimeout(() => {
+    if (this.state.picture) {
+      const usernameValid = this.validateUsername();
+      const emailValid = this.validateEmail();
+      const passwordValid = this.validatePassword();
+      const confirmationPasswordValid = this.validateConfirmationPassword();
+      if (
+        emailValid &&
+        passwordValid &&
+        confirmationPasswordValid &&
+        usernameValid
+      ) {
         LayoutAnimation.easeInEaseOut();
-        this.setState({ isLoading: false });
-        Alert.alert('🎸', 'You rock');
-      }, 1500);
+        console.log('Estado=====>', this.state);
+        this.props.navigate('Components');
+        // Alert.alert('REGISTRANDO LOS DATOS');
+      }
+    } else {
+      AsyncStorage.setItem('username', this.state.username);
+      AsyncStorage.setItem('email', this.state.email);
+      AsyncStorage.setItem('password', this.state.password);
+      this.props.navigate('Camera');
     }
   }
 
@@ -156,6 +178,7 @@ export default class LoginScreen3 extends Component {
         >
           <Text style={styles.signUpText}>Registro</Text>
           <Text style={styles.whoAreYouText}>¿ Quien eres ?</Text>
+
           <View style={styles.userTypesContainer}>
             <UserTypeItem
               label="CIUDADANO"
@@ -164,6 +187,13 @@ export default class LoginScreen3 extends Component {
               onPress={() => this.setSelectedType('parent')}
               selected={selectedType === 'parent'}
             />
+            {/* <UserTypeItem
+              label="MI FOTO"
+              labelColor="#ECC841"
+              image={{ uri: this.state.picture }}
+              onPress={() => this.setSelectedType('parent')}
+              selected={selectedType === 'parent'}
+            /> */}
             <UserTypeItem
               label="OFICIAL DE POLICIA"
               labelColor="#2CA75E"
@@ -264,7 +294,7 @@ export default class LoginScreen3 extends Component {
             containerStyle={{ flex: -1 }}
             buttonStyle={{ backgroundColor: 'transparent' }}
             underlayColor="transparent"
-            onPress={() => Alert.alert('🔥', 'You can login here')}
+            onPress={() => this.props.navigate('Components')}
           />
         </View>
       </ScrollView>
@@ -361,6 +391,7 @@ const styles = StyleSheet.create({
     margin: 4,
     height: 70,
     width: 70,
+    borderRadius: 50,
   },
   userTypeMugshotSelected: {
     height: 100,
