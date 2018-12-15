@@ -7,6 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import { Font } from 'expo';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -50,13 +51,13 @@ export default class LoginScreen1 extends Component {
   submitLoginCredentials() {
     const { showLoading } = this.state;
 
-    this.setState({
-      showLoading: !showLoading,
-    });
+    // this.setState({
+    //   showLoading: !showLoading,
+    // });
   }
 
   render() {
-    const { email, password, email_valid, showLoading } = this.state;
+       const { email, password, email_valid, showLoading } = this.state;
 
     return (
       <View style={styles.container}>
@@ -132,7 +133,7 @@ export default class LoginScreen1 extends Component {
                 title="LOG IN"
                 activeOpacity={1}
                 underlayColor="transparent"
-                onPress={this.submitLoginCredentials.bind(this)}
+                onPress={() => this.props.navigation.navigate('Components')}
                 loading={showLoading}
                 loadingProps={{ size: 'small', color: 'white' }}
                 disabled={!email_valid && password.length < 8}

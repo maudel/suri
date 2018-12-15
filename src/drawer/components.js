@@ -66,7 +66,7 @@ const Components = TabNavigator(
     },
   },
   {
-    initialRouteName: 'ButtonsTab',
+    initialRouteName: 'ListsTab',
     animationEnabled: false,
     swipeEnabled: true,
     // Android's default option displays tabBars on top, but iOS is bottom

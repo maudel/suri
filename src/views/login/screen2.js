@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { Font } from 'expo';
 import { Input, Button } from 'react-native-elements';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 

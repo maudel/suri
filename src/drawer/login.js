@@ -3,10 +3,13 @@ import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import Login from '../views/login';
+import components from '../drawer/components';
+
 
 const LoginDrawerItem = StackNavigator(
   {
     Playground: { screen: Login },
+    home: { screen: components}
   },
   {
     headerMode: 'none',
