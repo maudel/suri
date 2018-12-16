@@ -8,6 +8,7 @@
   "dependencies": {
     "@expo/vector-icons": "6.3.0",
     "avataaars": "^1.2.1",
+    "axios": "^0.18.0",
     "expo": "^31.0.2",
     "lodash": "^4.17.4",
     "react": "16.5.0",

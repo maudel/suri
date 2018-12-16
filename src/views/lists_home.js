@@ -18,36 +18,43 @@ import colors from '../config/colors';
 
 const users = [
   {
-    name: 'Juan Perez',
+    name: 'Maria Perales',
     ultimaVista: 'Sopocachi',
-    descripcion:'asdasdas',
+    descripcion:'Un estudiante de la paz fue tranquilamente en el pasado mayor rumbo a su casa cuando se lo vio abordar un  auto y nunca mas se volvio a saber de el',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
   },
   {
-    name: 'thot leader',
+    name: 'Emanuelle Cabral',
     ultimaVista: 'Bella Vista',
-    descripcion: 'SE ',
+    descripcion: 'Se encontraba de viaje por un trabajo misterioso que le ofrecieron a la argentia en julio del año pasado.',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/evagiselle/128.jpg',
   },
   {
     name: 'jsa',
     ultimaVista: 'Sopocachi',
+    descripcion: 'Se encontraba de viaje por un trabajo misterioso que le ofrecieron a la argentia en julio del año pasado',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
   },
   {
-    name: 'talhaconcepts',
+    name: 'Rebeca Colque',
     ultimaVista: 'Sopocachi',
+    descripcion: 'Se encontraba de viaje por un trabajo misterioso que le ofrecieron a la argentia en julio del año pasado',
+
     avatar:
       'https://s3.amazonaws.com/uifaces/faces/twitter/talhaconcepts/128.jpg',
   },
   {
-    name: 'andy vitale',
+    name: 'Carola Duckenson',
     ultimaVista: 'San Miguel',
+    descripcion: 'Se encontraba de viaje por un trabajo misterioso que le ofrecieron a la argentia en julio del año pasado',
+
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/andyvitale/128.jpg',
   },
   {
     name: 'katy friedson',
     ultimaVista: 'Miraflores',
+    descripcion: 'Se encontraba de viaje por un trabajo misterioso que le ofrecieron a la argentia en julio del año pasado',
+
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg',
   },
 ];
@@ -116,7 +123,7 @@ class Icons extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-        <Card title="Personas Desaparecidas">
+        <Card title="Desaparecidos">
         <SearchBar        
           placeholder="Escribe Aca..."        
           lightTheme        
@@ -134,13 +141,13 @@ class Icons extends Component {
             source={{ uri: u.avatar }}
           />
           <Text style={{marginBottom: 10,marginTop:20}}>
-          {u.name} fue visto por ultima ves en {u.ultimaVista} 
+          {u.name}, {u.descripcion} 
         </Text>
         <Button
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
           buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-          title='Ayudalo' 
+          title='Quieres saber mas ?' 
           onPress={() => navigation.navigate('Profile',{data: u})}
           />
           

@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Constants, MapView, Location, Permissions } from "expo";
-import { Button } from "react-native-elements";
+import { Button, Icon } from "react-native-elements";
 
 
 const { width, height } = Dimensions.get("window");
@@ -40,7 +40,7 @@ export default class Fonts extends Component {
       {
         latitude: -16.502908699999997,
         longitude: -68.1234116,
-        name: 'Juan Perez',
+        name: 'Paola Peralez',
 
         image: Images[0],
 
@@ -221,6 +221,54 @@ export default class Fonts extends Component {
                   <MapView.Callout>
                     <View>
                       <Text>Mas informacion</Text>
+                      <View
+          style={{
+            backgroundColor: 'rgba(220,230,218,1)',
+            width: 35,
+            height: 20,
+            borderRadius: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginLeft: 10,
+          }}
+        >
+          <Icon name="plus" color="green" size={10} />
+          <Text
+            style={{
+              color: 'green',
+              fontFamily: 'regular',
+              fontSize: 13,
+              marginLeft: 5,
+            }}
+          >
+            {1}
+          </Text>
+        </View>
+        <View
+          style={{
+            backgroundColor: 'rgba(220,230,218,1)',
+            width: 35,
+            height: 20,
+            borderRadius: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            marginLeft: 10,
+          }}
+        >
+          <Icon name="minu" color="green" size={10} />
+          <Text
+            style={{
+              color: 'red',
+              fontFamily: 'regular',
+              fontSize: 13,
+              marginLeft: 5,
+            }}
+          >
+            {1}
+          </Text>
+        </View>
                     </View>
                   </MapView.Callout>
                 </MapView.Marker>

@@ -68,10 +68,9 @@ export default class LoginScreen1 extends Component {
               <View style={styles.loginTitle}>
                 <View style={{ flexDirection: 'row' }}>
                   <Text style={styles.travelText}>SURI</Text>
-                  <Text style={styles.plusText}>+</Text>
                 </View>
                 <View style={{ marginTop: -10 }}>
-                  <Text style={styles.travelText}>HELP ME</Text>
+                  <Text style={styles.travelText}>Reporta</Text>
                 </View>
               </View>
               <View style={styles.loginInput}>

@@ -98,14 +98,14 @@ export default class LoginScreen1 extends Component {
           <View style={{ flex: 1, backgroundColor: 'rgba(47,44,60,1)' }}>
             <View style={styles.statusBar} />
             <View style={styles.navBar}>
-              <Text style={styles.nameHeader}>Theresa, 26</Text>
+              <Text style={styles.nameHeader}>Paola, 24</Text>
             </View>
             <ScrollView style={{ flex: 1 }}>
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <Image
                   source={{
                     uri:
-                      'https://static.pexels.com/photos/428336/pexels-photo-428336.jpeg',
+                      'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
                   }}
                   style={{
                     width: IMAGE_SIZE,
@@ -132,7 +132,7 @@ export default class LoginScreen1 extends Component {
                     fontFamily: 'bold',
                   }}
                 >
-                  Theresa
+                  Paola
                 </Text>
                 <Text
                   style={{
@@ -173,8 +173,7 @@ export default class LoginScreen1 extends Component {
                     fontFamily: 'regular',
                   }}
                 >
-                  100% Italian, fun loving, affectionate, young lady who knows
-                  what it takes to make a relationship work.
+              Un estudiante de la paz fue tranquilamente en el pasado mayor rumbo a su casa cuando se lo vio abordar un  auto y nunca mas se volvio a saber mas.
                 </Text>
               </View>
               <View style={{ flex: 1, marginTop: 30 }}>
@@ -187,7 +186,7 @@ export default class LoginScreen1 extends Component {
                     marginLeft: 40,
                   }}
                 >
-                  INFO
+                  Informacion
                 </Text>
                 <View
                   style={{
@@ -199,34 +198,30 @@ export default class LoginScreen1 extends Component {
                 >
                   <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}>
-                      <Text style={styles.infoTypeLabel}>Age</Text>
-                      <Text style={styles.infoTypeLabel}>Height</Text>
-                      <Text style={styles.infoTypeLabel}>Ethnicity</Text>
-                      <Text style={styles.infoTypeLabel}>Sign</Text>
-                      <Text style={styles.infoTypeLabel}>Religion</Text>
+                      <Text style={styles.infoTypeLabel}>Edad</Text>
+                      <Text style={styles.infoTypeLabel}>Altura</Text>
+                      <Text style={styles.infoTypeLabel}>Etnia</Text>
+                      <Text style={styles.infoTypeLabel}>Tez</Text>
+                      <Text style={styles.infoTypeLabel}>Marcas</Text>
                     </View>
                     <View style={{ flex: 1, marginLeft: 10 }}>
-                      <Text style={styles.infoAnswerLabel}>26</Text>
-                      <Text style={styles.infoAnswerLabel}>5'4"</Text>
-                      <Text style={styles.infoAnswerLabel}>White</Text>
-                      <Text style={styles.infoAnswerLabel}>Pisces</Text>
-                      <Text style={styles.infoAnswerLabel}>Catholic</Text>
+                      <Text style={styles.infoAnswerLabel}>24</Text>
+                      <Text style={styles.infoAnswerLabel}>1,66</Text>
+                      <Text style={styles.infoAnswerLabel}>Caucasica</Text>
+                      <Text style={styles.infoAnswerLabel}>Clara</Text>
+                      <Text style={styles.infoAnswerLabel}>Ninguna</Text>
                     </View>
                   </View>
                   <View style={{ flex: 1, flexDirection: 'row' }}>
                     <View style={{ flex: 1 }}>
-                      <Text style={styles.infoTypeLabel}>Body Type</Text>
-                      <Text style={styles.infoTypeLabel}>Diet</Text>
-                      <Text style={styles.infoTypeLabel}>Smoke</Text>
-                      <Text style={styles.infoTypeLabel}>Drink</Text>
-                      <Text style={styles.infoTypeLabel}>Drugs</Text>
+                      <Text style={styles.infoTypeLabel}>Contextura Fisica</Text>
+                      <Text style={styles.infoTypeLabel}>Bebe ?</Text>
+                      <Text style={styles.infoTypeLabel}>Drogas?</Text>
                     </View>
                     <View style={{ flex: 1, marginLeft: 10, marginRight: -20 }}>
-                      <Text style={styles.infoAnswerLabel}>Fit</Text>
-                      <Text style={styles.infoAnswerLabel}>Vegan</Text>
+                      <Text style={styles.infoAnswerLabel}>Media</Text>
                       <Text style={styles.infoAnswerLabel}>No</Text>
                       <Text style={styles.infoAnswerLabel}>No</Text>
-                      <Text style={styles.infoAnswerLabel}>Never</Text>
                     </View>
                   </View>
                 </View>
@@ -250,7 +245,7 @@ export default class LoginScreen1 extends Component {
                   start: [1, 0],
                   end: [0.2, 0],
                 }}
-                title="Message Theresa"
+                title="Reporta y Ayuda a Paola"
                 titleStyle={{
                   fontFamily: 'regular',
                   fontSize: 20,

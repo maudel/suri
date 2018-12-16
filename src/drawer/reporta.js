@@ -19,24 +19,39 @@ const Reporta = TabNavigator(
     //     ),
     //   },
     // },
-    FontsTab: {
-      screen: FontsTab,
-      path: '/fonts',
-      navigationOptions: {
-        tabBarLabel: 'Mapa',
-        tabBarIcon: ({ tintColor, focused }) => (
-          <Icon
-            name="map"
-            size={30}
-            type="font-awesome"
-            color={tintColor}
-          />
-        ),
+    InputTab: {
+        screen: InputTab,
+        path: '/input',
+        navigationOptions: {
+          tabBarLabel: 'Input',
+          tabBarIcon: ({ tintColor, focused }) => (
+            <Icon
+              name="wpforms"
+              size={30}
+              type="font-awesome"
+              color={tintColor}
+            />
+          ),
+        },
       },
-    },
+      InputTab: {
+        screen: InputTab,
+        path: '/input',
+        navigationOptions: {
+          tabBarLabel: 'Input',
+          tabBarIcon: ({ tintColor, focused }) => (
+            <Icon
+              name="wpforms"
+              size={30}
+              type="font-awesome"
+              color={tintColor}
+            />
+          ),
+        },
+      },
   },
   {
-    initialRouteName: 'ListsTab',
+    initialRouteName: 'InputTab',
     animationEnabled: false,
     swipeEnabled: true,
     // Android's default option displays tabBars on top, but iOS is bottom
@@ -69,7 +84,7 @@ Reporta.navigationOptions = {
 // and you were not on the Buttons tab
 export default StackNavigator(
   {
-    ComponentsTabs: { screen: Desaparecidos },
+    ComponentsTabs: { screen: Reporta },
   },
   {
     headerMode: 'none',

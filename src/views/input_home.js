@@ -28,6 +28,56 @@ class InputHome extends Component {
             placeholder="Apellido"
           />
           <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Tez"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="edad"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="altura"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="peso"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="lugar de estudios o trabajo"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="numero de referencia"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+          <Input
+            containerStyle={{ width: '90%' }}
+            placeholder="Apellido"
+          />
+
+          
+          <Input
             leftIcon={
               <Icon
                 name="map-marker"

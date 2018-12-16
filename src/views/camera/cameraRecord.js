@@ -1,5 +1,6 @@
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
+import axios from 'axios';
 import {
   StyleSheet,
   Text,
@@ -10,7 +11,20 @@ import {
   Alert,
   Dimensions,
 } from 'react-native';
-
+function toDataUrl(url, callback) {
+  console.log('getUrlTobBase');
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    var reader = new FileReader();
+    reader.onloadend = function() {
+      callback(reader.result);
+    };
+    reader.readAsDataURL(xhr.response);
+  };
+  xhr.open('GET', url);
+  xhr.responseType = 'blob';
+  xhr.send();
+}
 export default class CameraRecord extends React.Component {
   state = {
     flash: 'off',
@@ -70,6 +84,7 @@ export default class CameraRecord extends React.Component {
     }
   };
   takePicture = async function() {
+    
     if (this.camera) {
       this.camera.takePictureAsync().then(async data => {
         Alert.alert('Foto recuperada');
@@ -79,6 +94,26 @@ export default class CameraRecord extends React.Component {
 
         if (saveResult) {
           const url = this.props.navigation.getParam('url', 'S/D V');
+          toDataUrl(data.uri, function(myBase64) {
+            console.log('TENGO LA BASE 64 DE LA IMAGEN');
+            console.log('TENGO LA BASE 64 DE LA IMAGEN'); // myBase64 is the base64 string
+            axios
+              .post('http://192.168.11.135:8080/files', {
+                base: 'myBase64',
+              })
+              .then(response => {
+                console.log('response PETICION FLASK', response);
+                // this.props.navigation.goBack();
+              })
+              .catch(error => {
+                // console.log('error PETICION FLASK', Object.keys(error));
+
+                console.log('columns', error.config);
+                console.log('columns', error.response);
+                // this.props.navigation.goBack();
+              });
+          });
+
           if (url != 'S/D V') {
             this.props.navigation.navigate(url);
           } else {

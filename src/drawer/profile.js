@@ -27,7 +27,7 @@ const ProfileDrawerItem = StackNavigator({
 });
 
 ProfileDrawerItem.navigationOptions = {
-  drawerLabel: 'Denuncias'
+  drawerLabel: 'Reportes'
 };
 
 export default ProfileDrawerItem;

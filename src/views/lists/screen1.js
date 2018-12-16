@@ -271,7 +271,7 @@ export default class ListsScreen1 extends Component {
                           marginLeft: -15,
                         }}
                       >
-                        Paul Allen
+                        Paul Barriga
                       </Text>
                     </View>
                   </View>
@@ -295,7 +295,7 @@ export default class ListsScreen1 extends Component {
                 >
                   <View style={{ flex: 1, alignItems: 'center' }}>
                     <Button
-                      title="View Profile"
+                      title="Ver Detalles"
                       buttonStyle={{
                         height: 33,
                         width: 120,
@@ -311,28 +311,10 @@ export default class ListsScreen1 extends Component {
                       underlayColor="transparent"
                     />
                   </View>
-                  <View style={{ flex: 1, alignItems: 'center' }}>
-                    <Button
-                      title="Add User"
-                      buttonStyle={{
-                        height: 33,
-                        width: 120,
-                        backgroundColor: 'rgba(113, 154, 112, 1)',
-                        borderRadius: 5,
-                      }}
-                      titleStyle={{
-                        fontFamily: 'regular',
-                        fontSize: 13,
-                        color: 'white',
-                      }}
-                      onPress={() => console.log('aye')}
-                      underlayColor="transparent"
-                    />
-                  </View>
                 </View>
               </View>
               <View style={styles.navBar}>
-                <Text style={styles.nameHeader}>Denuncias Realizadas</Text>
+                <Text style={styles.nameHeader}>Lista de Reportes</Text>
               </View>
               {this.renderListCards()}
             </ScrollView>

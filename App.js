@@ -6,6 +6,9 @@ import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 
 import Desaparecidos from './src/drawer/desaparecidos';
+import Reporta from './src/drawer/reporta';
+
+
 import Profile from './src/drawer/profile';
 import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
@@ -53,6 +56,10 @@ const MainRoot = DrawerNavigator(
     Desaparecidos: {
       path: '/desaparecidos',
       screen: Desaparecidos,
+    },
+    Reporta: {
+      path: '/reporta',
+      screen: Reporta,
     },
     Education: {
       path: '/education',
