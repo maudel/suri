@@ -4,7 +4,8 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { View, Image, Dimensions } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
-import Components from './src/drawer/components';
+
+import Desaparecidos from './src/drawer/desaparecidos';
 import Profile from './src/drawer/profile';
 import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
@@ -45,9 +46,9 @@ const MainRoot = DrawerNavigator(
       path: '/lists',
       screen: Lists,
     },
-    Components: {
-      path: '/components',
-      screen: Components,
+    Desaparecidos: {
+      path: '/desaparecidos',
+      screen: Desaparecidos,
     },
     Education: {
       path: '/education',

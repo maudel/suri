@@ -3,12 +3,13 @@ import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import CameraView from '../views/camera';
-import components from '../drawer/components';
+import desaparecidos from './desaparecidos';
+
 
 const CameraSuri = StackNavigator(
   {
     Playground: { screen: CameraView },
-    home: { screen: components },
+    home: { screen: desaparecidos },
   },
   {
     headerMode: 'none',

@@ -86,6 +86,7 @@ export default class LoginScreen3 extends Component {
         email: this.state.email,
         password: this.state.password,
       });
+
     } else {
       Alert.alert('Obteniendo Foto');
     }
@@ -276,7 +277,7 @@ export default class LoginScreen3 extends Component {
             containerStyle={{ flex: -1 }}
             buttonStyle={{ backgroundColor: 'transparent' }}
             underlayColor="transparent"
-            onPress={() => this.props.navigate('Components')}
+            onPress={() => this.props.navigate('Desaparecidos')}
           />
         </View>
       </ScrollView>

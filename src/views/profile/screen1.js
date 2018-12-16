@@ -15,13 +15,14 @@ import { Font } from 'expo';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const IMAGE_SIZE = SCREEN_WIDTH - 80;
+ 
 
 class CustomButton extends Component {
   constructor() {
     super();
 
     this.state = {
-      selected: false,
+      selected: false
     };
   }
 
@@ -202,18 +203,6 @@ export default class LoginScreen1 extends Component {
                         <CustomButton title="Sport" />
                         <CustomButton title="Swimming" selected={true} />
                         <CustomButton title="Religion" />
-                      </View>
-                      <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <CustomButton title="Music" />
-                        <CustomButton title="Soccer" selected={true} />
-                        <CustomButton title="Radiohead" selected={true} />
-                        <CustomButton title="Micheal Jackson" />
-                      </View>
-                      <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <CustomButton title="Travelling" selected={true} />
-                        <CustomButton title="Rock'n'Roll" />
-                        <CustomButton title="Dogs" selected={true} />
-                        <CustomButton title="France" selected={true} />
                       </View>
                     </View>
                   </ScrollView>

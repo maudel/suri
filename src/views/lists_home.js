@@ -1,7 +1,9 @@
 import _ from 'lodash';
+import ListsDetails from '../views/lists_detail';
 
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Image, ListView, Button } from 'react-native';
+import { SearchBar } from 'react-native-elements'
 
 import {
   Text,
@@ -16,13 +18,15 @@ import colors from '../config/colors';
 
 const users = [
   {
-    name: 'brynn',
+    name: 'Juan Perez',
     ultimaVista: 'Sopocachi',
+    descripcion:'asdasdas',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
   },
   {
     name: 'thot leader',
     ultimaVista: 'Bella Vista',
+    descripcion: 'SE ',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/evagiselle/128.jpg',
   },
   {
@@ -54,11 +58,15 @@ class Icons extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
+    
     this.state = {
       selectedIndex: 0,
       value: 0.5,
+      loading: false,
+      data: users,
+      error: null,
     };
-
+    this.arrayholder = users;
     this.updateIndex = this.updateIndex.bind(this);
     this.renderRow = this.renderRow.bind(this);
   }
@@ -80,18 +88,44 @@ class Icons extends Component {
     );
   }
 
+  
+  searchFilterFunction = text => {    
+    const newData = this.arrayholder.filter(item => {      
+      const itemData = `${item.name.toUpperCase()}`;
+       const textData = text.toUpperCase();
+        
+       return itemData.indexOf(textData) > -1;    
+    });    
+    this.setState({ data: newData });  
+  };
+  
   render() {
     const { navigation } = this.props;
     const buttons = ['Button1', 'Button2'];
     const { selectedIndex } = this.state;
-
+    searchFilterFunction = text => {    
+      const newData = this.arrayholder.filter(item => {      
+        const itemData = `${item.name.title.toUpperCase()}   
+        ${item.name.first.toUpperCase()} ${item.name.last.toUpperCase()}`;
+        const textData = text.toUpperCase();
+          
+        return itemData.indexOf(textData) > -1;    
+      });    
+      this.setState({ data: newData });  
+    };
     return (
       <ScrollView>
-       
         <View style={styles.container}>
-        <Card title="CARD WITH DIVIDER">
+        <Card title="Personas Desaparecidas">
+        <SearchBar        
+          placeholder="Escribe Aca..."        
+          lightTheme        
+          round        
+          onChangeText={text => this.searchFilterFunction(text)}
+          autoCorrect={false}             
+        /> 
   {
-    users.map((u, i) => {
+    this.state.data.map((u, i) => {
       return (
         <View key={i} style={styles.user}>
         <Image
@@ -106,7 +140,9 @@ class Icons extends Component {
           icon={<Icon name='code' color='#ffffff' />}
           backgroundColor='#03A9F4'
           buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-          title='Ayudalo' />
+          title='Ayudalo' 
+          onPress={() => navigation.navigate('Profile',{data: u})}
+          />
         </View>
       );
     })

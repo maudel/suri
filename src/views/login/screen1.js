@@ -54,7 +54,7 @@ export default class LoginScreen1 extends Component {
     //   showLoading: !showLoading,
     // });
     console.log('submitLoginCredentials', this.props);
-    this.props.navigate('Components');
+    this.props.navigate('Desaparecidos');
   };
 
   render() {

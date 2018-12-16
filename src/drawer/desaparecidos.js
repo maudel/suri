@@ -7,7 +7,7 @@ import ListsTab from '../tabs/lists';
 import InputTab from '../tabs/input';
 import FontsTab from '../tabs/fonts';
 
-const Components = TabNavigator(
+const Desaparecidos = TabNavigator(
   {
     ListsTab: {
       screen: ListsTab,
@@ -19,21 +19,21 @@ const Components = TabNavigator(
         ),
       },
     },
-    InputTab: {
-      screen: InputTab,
-      path: '/input',
-      navigationOptions: {
-        tabBarLabel: 'Denuncias',
-        tabBarIcon: ({ tintColor, focused }) => (
-          <Icon
-            name="wpforms"
-            size={30}
-            type="font-awesome"
-            color={tintColor}
-          />
-        ),
-      },
-    },
+    // InputTab: {
+    //   screen: InputTab,
+    //   path: '/input',
+    //   navigationOptions: {
+    //     tabBarLabel: 'Denuncias',
+    //     tabBarIcon: ({ tintColor, focused }) => (
+    //       <Icon
+    //         name="wpforms"
+    //         size={30}
+    //         type="font-awesome"
+    //         color={tintColor}
+    //       />
+    //     ),
+    //   },
+    // },
     FontsTab: {
       screen: FontsTab,
       path: '/fonts',
@@ -64,8 +64,8 @@ const Components = TabNavigator(
   }
 );
 
-Components.navigationOptions = {
-  drawerLabel: 'Components',
+Desaparecidos.navigationOptions = {
+  drawerLabel: 'Desaparecidos',
   drawerIcon: ({ tintColor }) => (
     <Icon
       name="settings"
@@ -84,7 +84,7 @@ Components.navigationOptions = {
 // and you were not on the Buttons tab
 export default StackNavigator(
   {
-    ComponentsTabs: { screen: Components },
+    ComponentsTabs: { screen: Desaparecidos },
   },
   {
     headerMode: 'none',
