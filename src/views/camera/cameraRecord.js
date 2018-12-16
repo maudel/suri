@@ -84,7 +84,6 @@ export default class CameraRecord extends React.Component {
     }
   };
   takePicture = async function() {
-    
     if (this.camera) {
       this.camera.takePictureAsync().then(async data => {
         Alert.alert('Foto recuperada');
@@ -97,9 +96,11 @@ export default class CameraRecord extends React.Component {
           toDataUrl(data.uri, function(myBase64) {
             console.log('TENGO LA BASE 64 DE LA IMAGEN');
             console.log('TENGO LA BASE 64 DE LA IMAGEN'); // myBase64 is the base64 string
+
+            let base = myBase64.replace('data:image/jpeg;base64,', '');
             axios
-              .post('http://192.168.11.135:8080/files', {
-                base: 'myBase64',
+              .post('http://192.168.11.100:5000/files', {
+                base: base,
               })
               .then(response => {
                 console.log('response PETICION FLASK', response);
@@ -113,12 +114,6 @@ export default class CameraRecord extends React.Component {
                 // this.props.navigation.goBack();
               });
           });
-
-          if (url != 'S/D V') {
-            this.props.navigation.navigate(url);
-          } else {
-            this.props.navigation.goBack();
-          }
         }
       });
     }
