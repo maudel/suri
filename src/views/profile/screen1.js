@@ -16,7 +16,13 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const IMAGE_SIZE = SCREEN_WIDTH - 80;
  
-
+const user = {
+  name: 'teresa',
+  age: 13,
+  descripcion: 'Desaparecio en fecha 02/12/2018 a las 6:00 AM en su domicilio',
+  tez: 'morena',
+  altura: '1,60'
+}
 class CustomButton extends Component {
   constructor() {
     super();
@@ -170,43 +176,6 @@ export default class LoginScreen1 extends Component {
                   100% Italian, fun loving, affectionate, young lady who knows
                   what it takes to make a relationship work.
                 </Text>
-              </View>
-              <View style={{ flex: 1, marginTop: 30 }}>
-                <Text
-                  style={{
-                    flex: 1,
-                    fontSize: 15,
-                    color: 'rgba(216, 121, 112, 1)',
-                    fontFamily: 'regular',
-                    marginLeft: 40,
-                  }}
-                >
-                  INTERESTS
-                </Text>
-                <View style={{ flex: 1, width: SCREEN_WIDTH, marginTop: 20 }}>
-                  <ScrollView
-                    style={{ flex: 1 }}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                  >
-                    <View
-                      style={{
-                        flex: 1,
-                        flexDirection: 'column',
-                        height: 170,
-                        marginLeft: 40,
-                        marginRight: 10,
-                      }}
-                    >
-                      <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <CustomButton title="Philosophy" selected={true} />
-                        <CustomButton title="Sport" />
-                        <CustomButton title="Swimming" selected={true} />
-                        <CustomButton title="Religion" />
-                      </View>
-                    </View>
-                  </ScrollView>
-                </View>
               </View>
               <View style={{ flex: 1, marginTop: 30 }}>
                 <Text

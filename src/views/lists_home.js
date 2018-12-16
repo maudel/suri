@@ -2,71 +2,38 @@ import _ from 'lodash';
 import ListsDetails from '../views/lists_detail';
 
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Image, ListView, Button } from 'react-native';
-import { SearchBar } from 'react-native-elements'
+import { View, ScrollView, StyleSheet, ListView,Button} from 'react-native';
+import { SearchBar } from 'react-native-elements';
+import { default as Service } from './../services/reportes';
+import Image from 'react-native-remote-svg';
+import Avatar from 'avataaars';
 
 import {
   Text,
   Card,
   Tile,
   Icon,
-  ListItem,
-  Avatar,
+  ListItem
 } from 'react-native-elements';
 
 import colors from '../config/colors';
 
-const users = [
-  {
-    name: 'Juan Perez',
-    ultimaVista: 'Sopocachi',
-    descripcion:'asdasdas',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-  },
-  {
-    name: 'thot leader',
-    ultimaVista: 'Bella Vista',
-    descripcion: 'SE ',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/evagiselle/128.jpg',
-  },
-  {
-    name: 'jsa',
-    ultimaVista: 'Sopocachi',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
-  },
-  {
-    name: 'talhaconcepts',
-    ultimaVista: 'Sopocachi',
-    avatar:
-      'https://s3.amazonaws.com/uifaces/faces/twitter/talhaconcepts/128.jpg',
-  },
-  {
-    name: 'andy vitale',
-    ultimaVista: 'San Miguel',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/andyvitale/128.jpg',
-  },
-  {
-    name: 'katy friedson',
-    ultimaVista: 'Miraflores',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg',
-  },
-];
 class Icons extends Component {
   constructor() {
     super();
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
-
     
+        
     this.state = {
       selectedIndex: 0,
       value: 0.5,
       loading: false,
-      data: users,
+      data: Service.getReportes(),
       error: null,
     };
-    this.arrayholder = users;
+    this.arrayholder = this.state.data;
     this.updateIndex = this.updateIndex.bind(this);
     this.renderRow = this.renderRow.bind(this);
   }
@@ -126,13 +93,10 @@ class Icons extends Component {
         /> 
   {
     this.state.data.map((u, i) => {
+ 
       return (
         <View key={i} style={styles.user}>
-        <Image
-            style={styles.image}
-            resizeMode="cover"
-            source={{ uri: u.avatar }}
-          />
+        
           <Text style={{marginBottom: 10,marginTop:20}}>
           {u.name} fue visto por ultima ves en {u.ultimaVista} 
         </Text>

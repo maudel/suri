@@ -18,7 +18,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.suri.suriReport",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.suri.suriReport"
     }
   }
 }
