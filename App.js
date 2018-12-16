@@ -5,19 +5,21 @@ import { View, Image, Dimensions } from 'react-native';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
 
 import Components from './src/drawer/components';
-import Ratings from './src/drawer/ratings';
-import Pricing from './src/drawer/pricing';
-import Login from './src/drawer/login';
 import Profile from './src/drawer/profile';
 import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
-import Camera from './src/drawer/camera';
+import Education from './src/drawer/education';
+import PhoneEmergency from './src/drawer/phone_emergency';
+
+import Login from './src/views/login';
 import Loading from './src/views/loading';
+import Camera from './src/views/camera';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const CustomDrawerContentComponent = props => (
   <View style={{ flex: 1, backgroundColor: '#43484d' }}>
+    {console.log('propsCustomDrawerContentComponent', props)}
     <View
       style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }}
     >
@@ -35,10 +37,6 @@ const CustomDrawerContentComponent = props => (
 
 const MainRoot = DrawerNavigator(
   {
-    Login: {
-      path: '/login',
-      screen: Login,
-    },
     Profile: {
       path: '/profile',
       screen: Profile,
@@ -51,25 +49,41 @@ const MainRoot = DrawerNavigator(
       path: '/components',
       screen: Components,
     },
-    Ratings: {
-      path: '/ratings',
-      screen: Ratings,
+    Education: {
+      path: '/education',
+      screen: Education,
     },
-    Pricing: {
-      path: '/pricing',
-      screen: Pricing,
+
+    PhoneEmergency: {
+      path: '/phone_emergency',
+      screen: PhoneEmergency,
     },
+
     Settings: {
       path: '/settings',
       screen: Settings,
     },
+    Login: {
+      path: '/login',
+      screen: Login,
+      navigationOptions: {
+        drawerLabel: () => null,
+      },
+    },
+
     Camera: {
       path: '/camera',
       screen: Camera,
+      navigationOptions: {
+        drawerLabel: () => null,
+      },
     },
     Loading: {
       path: '/loading',
       screen: Loading,
+      navigationOptions: {
+        drawerLabel: () => null,
+      },
     },
   },
   {

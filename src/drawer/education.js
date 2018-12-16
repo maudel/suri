@@ -2,13 +2,13 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Profile from '../views/profile';
+import Education from '../views/education';
 
-const ProfileDrawerItem = StackNavigator({
+const EducationDrawer = StackNavigator({
   Playground: {
-    screen: Profile,
+    screen: Education,
     navigationOptions: ({ navigation }) => ({
-      title: 'Profile',
+      title: 'Consejos Educativos',
       headerStyle: {
         borderBottomWidth: 0,
         backgroundColor: '#f5f5f5',
@@ -26,8 +26,8 @@ const ProfileDrawerItem = StackNavigator({
   },
 });
 
-ProfileDrawerItem.navigationOptions = {
-  drawerLabel: 'Profile',
+EducationDrawer.navigationOptions = {
+  drawerLabel: 'Consejos Educativos',
   drawerIcon: ({ tintColor }) => (
     <Icon
       name="person"
@@ -42,4 +42,4 @@ ProfileDrawerItem.navigationOptions = {
   ),
 };
 
-export default ProfileDrawerItem;
+export default EducationDrawer;

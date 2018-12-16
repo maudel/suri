@@ -2,13 +2,13 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import Profile from '../views/profile';
+import PhoneEmergency from '../views/phone_emergency';
 
-const ProfileDrawerItem = StackNavigator({
+const PhoneEmergencyDrawer = StackNavigator({
   Playground: {
-    screen: Profile,
+    screen: PhoneEmergency,
     navigationOptions: ({ navigation }) => ({
-      title: 'Profile',
+      title: 'Numeros de Emergencia',
       headerStyle: {
         borderBottomWidth: 0,
         backgroundColor: '#f5f5f5',
@@ -26,8 +26,8 @@ const ProfileDrawerItem = StackNavigator({
   },
 });
 
-ProfileDrawerItem.navigationOptions = {
-  drawerLabel: 'Profile',
+PhoneEmergencyDrawer.navigationOptions = {
+  drawerLabel: 'Numeros de Emergencia',
   drawerIcon: ({ tintColor }) => (
     <Icon
       name="person"
@@ -42,4 +42,4 @@ ProfileDrawerItem.navigationOptions = {
   ),
 };
 
-export default ProfileDrawerItem;
+export default PhoneEmergencyDrawer;
