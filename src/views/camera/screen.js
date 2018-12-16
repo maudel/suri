@@ -43,7 +43,14 @@ export default class CameraScreen extends React.Component {
       }
     }
   };
-
+  record = async () => {
+    this.camera.recordAsync().then(response => {
+      console.log('Response Video RECORD STOP', response);
+    });
+  };
+  stop = () => {
+    this.camera.stopRecording();
+  };
   upload = async () => {
     console.log('Imagen', this.state);
     try {
@@ -146,6 +153,34 @@ export default class CameraScreen extends React.Component {
                   }}
                   titleStyle={styles.signUpButtonText}
                   onPress={this.upload}
+                />
+              </View>
+              <View style={styles.captureButtonView}>
+                <Button
+                  title="Grabar Video"
+                  containerStyle={{ flex: -1 }}
+                  buttonStyle={styles.signUpButton}
+                  linearGradientProps={{
+                    colors: ['#FF9800', '#F44336'],
+                    start: [1, 0],
+                    end: [0.2, 0],
+                  }}
+                  titleStyle={styles.signUpButtonText}
+                  onPress={this.record}
+                />
+              </View>
+              <View style={styles.captureButtonView}>
+                <Button
+                  title="Guardar Video"
+                  containerStyle={{ flex: -1 }}
+                  buttonStyle={styles.signUpButton}
+                  linearGradientProps={{
+                    colors: ['#FF9800', '#F44336'],
+                    start: [1, 0],
+                    end: [0.2, 0],
+                  }}
+                  titleStyle={styles.signUpButtonText}
+                  onPress={this.stop}
                 />
               </View>
             </View>
