@@ -30,7 +30,7 @@ EducationDrawer.navigationOptions = {
   drawerLabel: 'Consejos Educativos',
   drawerIcon: ({ tintColor }) => (
     <Icon
-      name="person"
+      name="star"
       size={30}
       iconStyle={{
         width: 30,

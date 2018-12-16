@@ -30,7 +30,7 @@ PhoneEmergencyDrawer.navigationOptions = {
   drawerLabel: 'Numeros de Emergencia',
   drawerIcon: ({ tintColor }) => (
     <Icon
-      name="person"
+      name="phone"
       size={30}
       iconStyle={{
         width: 30,
