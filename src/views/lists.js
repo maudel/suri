@@ -11,9 +11,9 @@ export default class Lists extends Component {
     return (
       <View style={styles.container}>
         <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
-          <ListsScreen1 />
           <ListsScreen2 />
           <ListsScreen3 />
+          <ListsScreen1 />
           <ListsScreen4 />
         </ScrollView>
       </View>

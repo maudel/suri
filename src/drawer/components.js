@@ -9,41 +9,11 @@ import FontsTab from '../tabs/fonts';
 
 const Components = TabNavigator(
   {
-    UsuariosTab: {
-      screen: ButtonsTab,
-      path: '/buttons',
-      navigationOptions: {
-        tabBarLabel: 'UsuariosTab',
-        tabBarIcon: ({ tintColor, focused }) => (
-          <Icon
-            name={focused ? 'emoticon-cool' : 'emoticon-neutral'}
-            size={30}
-            type="material-community"
-            color={tintColor}
-          />
-        ),
-      },
-    },
-    ButtonsTab: {
-      screen: ButtonsTab,
-      path: '/buttons',
-      navigationOptions: {
-        tabBarLabel: 'Buttons',
-        tabBarIcon: ({ tintColor, focused }) => (
-          <Icon
-            name={focused ? 'emoticon-cool' : 'emoticon-neutral'}
-            size={30}
-            type="material-community"
-            color={tintColor}
-          />
-        ),
-      },
-    },
     ListsTab: {
       screen: ListsTab,
       path: '/lists',
       navigationOptions: {
-        tabBarLabel: 'Lists',
+        tabBarLabel: 'Desaparecidos',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon name="list" size={30} type="entypo" color={tintColor} />
         ),
@@ -53,7 +23,7 @@ const Components = TabNavigator(
       screen: InputTab,
       path: '/input',
       navigationOptions: {
-        tabBarLabel: 'Input',
+        tabBarLabel: 'Denuncias',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon
             name="wpforms"
@@ -68,7 +38,7 @@ const Components = TabNavigator(
       screen: FontsTab,
       path: '/fonts',
       navigationOptions: {
-        tabBarLabel: 'Fonts',
+        tabBarLabel: 'Mapa',
         tabBarIcon: ({ tintColor, focused }) => (
           <Icon
             name={focused ? 'font' : 'font'}

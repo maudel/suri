@@ -12,7 +12,11 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-elements": "^1.0.0-beta7",
+<<<<<<< HEAD
     "react-native-phone-call": "^1.0.9",
+=======
+    "react-native-maps": "^0.22.1",
+>>>>>>> 54f13db637d9db9d00e526e01a843b400365f085
     "react-native-ratings": "^5.3.0",
     "react-native-touchable-scale": "2.0.0",
     "react-navigation": "1.5.8"
