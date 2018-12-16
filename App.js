@@ -13,7 +13,8 @@ import PhoneEmergency from './src/drawer/phone_emergency';
 
 import Login from './src/views/login';
 import Loading from './src/views/loading';
-import Camera from './src/views/camera';
+import CameraRecord from './src/views/camera';
+// import Camera from './src/views/camera/screen';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -70,14 +71,11 @@ const MainRoot = DrawerNavigator(
         drawerLabel: () => null,
       },
     },
-
-    Camera: {
-      path: '/camera',
-      screen: Camera,
-      navigationOptions: {
-        drawerLabel: () => null,
-      },
+    CameraRecord: {
+      path: '/camera_record',
+      screen: CameraRecord,
     },
+
     Loading: {
       path: '/loading',
       screen: Loading,

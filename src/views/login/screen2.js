@@ -81,13 +81,16 @@ export default class LoginScreen3 extends Component {
     ) {
       LayoutAnimation.easeInEaseOut();
       console.log('this.state.username', this.state);
-      this.props.navigate('Camera', {
+      this.props.navigate('CameraRecord', {
         username: this.state.username,
         email: this.state.email,
         password: this.state.password,
+        camera: true,
+        video: false,
+        url: 'Loading',
       });
     } else {
-      Alert.alert('Obteniendo Foto');
+      Alert.alert('Algunos campos no estas llenados correctamente.');
     }
   }
 
