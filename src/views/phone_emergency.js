@@ -29,10 +29,12 @@ class PhoneEmergency extends Component {
       return (
         <ListItem
           key={i}
+          onPress={() => this.callPhone(e.phone)}
           title={e.description}
           badge={{
             value: 'Llamar',
             textStyle: { color: 'white' },
+
             containerStyle: { marginTop: -20, backgroundColor: '#2ecc71' },
           }}
         />
