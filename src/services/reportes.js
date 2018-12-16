@@ -6,33 +6,33 @@ const getReportes = function() {
           name: 'Juan Perez',
           ultimaVista: 'Sopocachi',
           descripcion:'asdasdas',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
         {
           name: 'thot leader',
           ultimaVista: 'Bella Vista',
           descripcion: 'SE ',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
         {
           name: 'jsa',
           ultimaVista: 'Sopocachi',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
         {
           name: 'talhaconcepts',
           ultimaVista: 'Sopocachi',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
         {
           name: 'andy vitale',
           ultimaVista: 'San Miguel',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
         {
           name: 'katy friedson',
           ultimaVista: 'Miraflores',
-          avatar: avatarUrl,
+          avatar: '../../assets/images/avataaars.png',
         },
       ];
   };

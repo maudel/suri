@@ -1,8 +1,29 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Animated, ScrollView, Dimensions } from "react-native";
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Animated,
+  Image,
+  Dimensions,
+} from "react-native";
 import { Constants, MapView, Location, Permissions } from "expo";
 import { Button } from "react-native-elements";
 
+
+const { width, height } = Dimensions.get("window");
+
+const CARD_HEIGHT = height / 4;
+const CARD_WIDTH = CARD_HEIGHT - 50;
+
+const Images = [
+  { uri: "https://s3.amazonaws.com/uifaces/faces/twitter/talhaconcepts/128.jpg" },
+  { uri: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" },
+  { uri: "https://s3.amazonaws.com/uifaces/faces/twitter/evagiselle/128.jpg" },
+  { uri: "https://s3.amazonaws.com/uifaces/faces/twitter/andyvitale/128.jpg" }
+]
 export default class Fonts extends Component {
   state = {
     mapRegion: null,
@@ -11,51 +32,66 @@ export default class Fonts extends Component {
     denuncias: [
       {
         latitude: -16.503908699999997,
-        longitude: -68.1334116
+        longitude: -68.1334116,
+        name: 'Eva Maria',
+        image: Images[0]
+
       },
       {
         latitude: -16.502908699999997,
-        longitude: -68.1234116
+        longitude: -68.1234116,
+        name: 'Juan Perez',
+
+        image: Images[0],
+
       },
       {
         latitude: -16.504908699999997,
-        longitude: -68.1134116
+        longitude: -68.1134116,
+        name: 'Juan Perez',
+        image: Images[1],
+
       },
       {
         latitude: -16.502908699999997,
-        longitude: -68.1434116
+        longitude: -68.1434116,
+        name: 'Juan Perez',
+        image: Images[2],
+
       },
       {
         latitude: -16.507908699999997,
-        longitude: -68.1434116
+        longitude: -68.1434116,
+        name: 'Juan Perez',
+        image: Images[3],
+
       },
       {
         latitude: -16.508908699999997,
-        longitude: -68.1734116
+        longitude: -68.1734116,
+        name: 'Juan Perez',
+        image: Images[1],
+
       },
       {
         latitude: -16.500908699999997,
-        longitude: -68.1934116
+        longitude: -68.1934116,
+        name: 'Juan Perez',
+        image: Images[2],
+
       },
       {
         latitude: -16.502908699999997,
-        longitude: -68.1434116
+        longitude: -68.1434116,
+        name: 'Juan Perez',
+        image: Images[1],
+
       },
       {
         latitude: -16.502908699999997,
-        longitude: -68.1434116
-      },
-      {
-        latitude: -16.501108699999997,
-        longitude: -68.1134116
-      },
-      {
-        latitude: -16.502908699999997,
-        longitude: -68.1434116
-      },
-      {
-        latitude: -16.502908699999997,
-        longitude: -68.1434116
+        longitude: -68.1434116,
+        name: 'Juan Perez',
+        image: Images[3],
       }
     ]
   };
@@ -97,6 +133,24 @@ export default class Fonts extends Component {
     this.animation = new Animated.Value(0);
   }
   render() {
+    const interpolations = this.state.denuncias.map((marker, index) => {
+      const inputRange = [
+        (index - 1) * CARD_WIDTH,
+        index * CARD_WIDTH,
+        ((index + 1) * CARD_WIDTH),
+      ];
+      const scale = this.animation.interpolate({
+        inputRange,
+        outputRange: [1, 2.5, 1],
+        extrapolate: "clamp",
+      });
+      const opacity = this.animation.interpolate({
+        inputRange,
+        outputRange: [0.35, 1, 0.35],
+        extrapolate: "clamp",
+      });
+      return { scale, opacity };
+    });
     return (
       <View style={styles.container}>
         {this.state.locationResult === null ? (
@@ -111,7 +165,7 @@ export default class Fonts extends Component {
             region={this.state.mapRegion}
             onRegionChange={this._handleMapRegionChange}
           >
-            {this.state.denuncias.map(marker => {
+            {this.state.denuncias.map((marker,index) => {
               // const opacityStyle = {
               //   opacity: interpolations[index].opacity
               // };
@@ -128,7 +182,29 @@ export default class Fonts extends Component {
                 }
                 return color;
               }
+              const scaleStyle = {
+                transform: [
+                  {
+                    scale: interpolations[index].scale,
+                  },
+                ],
+              };
+              const opacityStyle = {
+                opacity: interpolations[index].opacity,
+              };
               return (
+                // <MapView.Marker key={index} coordinate={{
+                //   latitude: marker.latitude,
+                //   longitude: marker.longitude
+                // }}>
+                //   <Animated.View style={[styles.markerWrap, opacityStyle]}>
+                //     <Animated.View style={[styles.ring, scaleStyle]} />
+                //     <View style={styles.marker} />
+                //   </Animated.View>
+                // </MapView.Marker>
+                
+
+
                 <MapView.Marker
                   coordinate={{
                     latitude: marker.latitude,
@@ -148,11 +224,48 @@ export default class Fonts extends Component {
                     </View>
                   </MapView.Callout>
                 </MapView.Marker>
+                
               );
             })}
           </MapView>
+          
         )}
-
+        <Animated.ScrollView
+              horizontal
+              scrollEventThrottle={1}
+              showsHorizontalScrollIndicator={false}
+              snapToInterval={CARD_WIDTH}
+              onScroll={Animated.event(
+                [
+                  {
+                    nativeEvent: {
+                      contentOffset: {
+                        x: this.animation,
+                      },
+                    },
+                  },
+                ],
+                { useNativeDriver: true }
+              )}
+              style={styles.scrollView}
+              contentContainerStyle={styles.endPadding}
+            >
+              {this.state.denuncias.map((marker, index) => (
+                <View style={styles.card} key={index}>
+                  <Image
+                    source={marker.image}
+                    style={styles.cardImage}
+                    resizeMode="cover"
+                  />
+                  <View style={styles.textContent}>
+                    <Text numberOfLines={1} style={styles.cardtitle}>{marker.name}</Text>
+                    <Text numberOfLines={1} style={styles.cardDescription}>
+                      {marker.description}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </Animated.ScrollView>
         {/* <Text>Location: {this.state.locationResult}</Text> */}
       </View>
     );
@@ -217,6 +330,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 5,
     fontWeight: "bold"
+  },
+  marker: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "rgba(130,4,150, 0.9)",
   },
   ring: {
     width: 24,

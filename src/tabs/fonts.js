@@ -19,7 +19,7 @@ const FontsTab = StackNavigator({
     screen: FontsTabView,
     path: '/',
     navigationOptions: ({ navigation }) => ({
-      title: 'Fonts',
+      title: 'Mapa De Desaparecidos',
       headerLeft: (
         <Icon
           name="menu"

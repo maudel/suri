@@ -20,37 +20,37 @@ const USERS = [
   {
     name: 'Johh Smith',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg',
-    value: '- 164',
+    value: '- 2',
   },
   {
     name: 'Sarah Parker',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/evagiselle/128.jpg',
-    value: '+ 203',
+    value: '+ 2',
     positive: true,
   },
   {
     name: 'Paul Allen',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
-    value: '+ 464',
+    value: '+ 3',
     positive: true,
   },
   {
     name: 'Terry Andrews',
     avatar:
       'https://s3.amazonaws.com/uifaces/faces/twitter/talhaconcepts/128.jpg',
-    value: '- 80',
+    value: '- 1',
     positive: false,
   },
   {
     name: 'Andy Vitale',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/andyvitale/128.jpg',
-    value: '- 230',
+    value: '- 6',
     positive: false,
   },
   {
     name: 'Katy Friedson',
     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg',
-    value: '+ 160',
+    value: '+ 10',
     positive: true,
   },
 ];
@@ -154,7 +154,7 @@ export default class ListsScreen1 extends Component {
         <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
           <View style={{ marginLeft: 15 }}>
             <Avatar
-              small
+              large
               rounded
               source={{
                 uri: avatar,
@@ -192,7 +192,7 @@ export default class ListsScreen1 extends Component {
               marginHorizontal: 10,
             }}
           >
-            <Icon name="md-person-add" color="gray" size={20} />
+            <Icon name="plus" color="gray" size={20} />
           </View>
         </View>
       </View>
@@ -214,7 +214,7 @@ export default class ListsScreen1 extends Component {
           >
             <View style={styles.statusBar} />
             <View style={styles.navBar}>
-              <Text style={styles.nameHeader}>Growing</Text>
+              <Text style={styles.nameHeader}>Perfil</Text>
             </View>
             <ScrollView style={{ flex: 1, marginBottom: 20 }}>
               <View
@@ -330,6 +330,9 @@ export default class ListsScreen1 extends Component {
                     />
                   </View>
                 </View>
+              </View>
+              <View style={styles.navBar}>
+                <Text style={styles.nameHeader}>Denuncias Realizadas</Text>
               </View>
               {this.renderListCards()}
             </ScrollView>

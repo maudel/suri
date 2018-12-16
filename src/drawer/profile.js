@@ -8,14 +8,14 @@ const ProfileDrawerItem = StackNavigator({
   Playground: {
     screen: Profile,
     navigationOptions: ({ navigation }) => ({
-      title: 'Profile',
+      title: 'Perfil',
       headerStyle: {
         borderBottomWidth: 0,
         backgroundColor: '#f5f5f5',
       },
       headerLeft: (
         <Icon
-          name="menu"
+          name="face"
           size={30}
           type="entypo"
           iconStyle={{ paddingLeft: 10 }}
@@ -27,19 +27,7 @@ const ProfileDrawerItem = StackNavigator({
 });
 
 ProfileDrawerItem.navigationOptions = {
-  drawerLabel: 'Profile',
-  drawerIcon: ({ tintColor }) => (
-    <Icon
-      name="person"
-      size={30}
-      iconStyle={{
-        width: 30,
-        height: 30,
-      }}
-      type="material"
-      color={tintColor}
-    />
-  ),
+  drawerLabel: 'Denuncias'
 };
 
 export default ProfileDrawerItem;

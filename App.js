@@ -26,7 +26,7 @@ const CustomDrawerContentComponent = props => (
       style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }}
     >
       <Image
-        source={require('./src/images/meerkat.png')}
+        source={require('./assets/icons/SuriReporta2.png')}
         style={{ width: SCREEN_WIDTH * 0.57 }}
         resizeMode="contain"
       />
@@ -42,6 +42,9 @@ const MainRoot = DrawerNavigator(
     Profile: {
       path: '/profile',
       screen: Profile,
+      navigationOptions: {
+        drawerLabel: () => null,
+      },
     },
     Lists: {
       path: '/lists',

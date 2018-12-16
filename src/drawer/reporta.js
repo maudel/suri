@@ -7,30 +7,15 @@ import ListsTab from '../tabs/lists';
 import InputTab from '../tabs/input';
 import FontsTab from '../tabs/fonts';
 
-const Desaparecidos = TabNavigator(
+const Reporta = TabNavigator(
   {
-    ListsTab: {
-      screen: ListsTab,
-      path: '/lists',
-      navigationOptions: {
-        tabBarLabel: 'Desaparecidos',
-        tabBarIcon: ({ tintColor, focused }) => (
-          <Icon name="question" size={30} type="entypo" color={tintColor} />
-        ),
-      },
-    },
-    // InputTab: {
-    //   screen: InputTab,
-    //   path: '/input',
+    // ListsTab: {
+    //   screen: ListsTab,
+    //   path: '/lists',
     //   navigationOptions: {
-    //     tabBarLabel: 'Denuncias',
+    //     tabBarLabel: 'Desaparecidos',
     //     tabBarIcon: ({ tintColor, focused }) => (
-    //       <Icon
-    //         name="wpforms"
-    //         size={30}
-    //         type="font-awesome"
-    //         color={tintColor}
-    //       />
+    //       <Icon name="question" size={30} type="entypo" color={tintColor} />
     //     ),
     //   },
     // },
@@ -64,8 +49,8 @@ const Desaparecidos = TabNavigator(
   }
 );
 
-Desaparecidos.navigationOptions = {
-  drawerLabel: 'Desaparecidos',
+Reporta.navigationOptions = {
+  drawerLabel: 'Reporta',
   drawerIcon: ({ tintColor }) => (
     <Icon
       name="question"

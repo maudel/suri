@@ -14,7 +14,7 @@ const ListsDetailTabView = ({ navigation }) => (
   <ListsDetails banner="Lists Detail" navigation={navigation} />
 );
 
-const ListsTab = StackNavigator({
+const DenunciaML = StackNavigator({
   Home: {
     screen: ListsTabView,
     path: '/',

@@ -14,10 +14,10 @@ const ListsDrawerItem = StackNavigator(
 );
 
 ListsDrawerItem.navigationOptions = {
-  drawerLabel: 'Lists',
+  drawerLabel: 'Profile',
   drawerIcon: ({ tintColor }) => (
     <Icon
-      name="list"
+      name="face"
       size={30}
       iconStyle={{
         width: 30,

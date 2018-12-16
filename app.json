@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Suri+ Help Me",
+    "name": "Suri Reporta",
     "slug": "react-native-elements-app",
     "description": "App for people' security",
     "privacy": "public",
@@ -9,9 +9,9 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
-    "icon": "./assets/icons/icon.png",
+    "icon": "./assets/icons/SuriReporta2.png",
     "splash": {
-      "image": "./assets/icons/meerkat.png"
+      "image": "./assets/icons/SuriReportaLogo.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
