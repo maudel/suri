@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 
 // :fire: this is v good, @xavier-villelegier
 import { default as CameraScreen } from './camera/screen';
+import { default as CameraRecord } from './camera/cameraRecord';
 
 export default class CameraView extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class CameraView extends Component {
     return (
       <View style={styles.container}>
         <ScrollView horizontal pagingEnabled decelerationRate={0.993}>
-          <CameraScreen {...this.props} />
+          <CameraRecord {...this.props} />
         </ScrollView>
       </View>
     );
@@ -20,6 +21,5 @@ export default class CameraView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
   },
 });
